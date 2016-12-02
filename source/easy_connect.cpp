@@ -15,26 +15,21 @@
 #include "easy_connect-js.h"
 #include "easy-connect.h"
 
-void js_NetworkInterface_destructor(const uintptr_t native_handle)
-{
-  delete (NetworkInterface*) native_handle;
-}
-
 DECLARE_GLOBAL_FUNCTION(easy_connect)
 {
-  CHECK_ARGUMENT_COUNT(global, easy_connect, (args_count == 0 || args_count == 1));
-  CHECK_ARGUMENT_TYPE_ON_CONDITION(global, easy_connect, 0, boolean, (args_count == 1));
-
-  bool enable_logging = false;
-  if (args_count == 1) {
-    enable_logging = jsmbed_wrap_unbox_boolean(args[0]);
-  }
-
-  // NB: easy_connect returns a NetworkInterface*
-  uintptr_t network_interface = (uintptr_t) easy_connect(enable_logging);
-
-  jerry_value_t js_object = jsmbed_wrap_create_object();
-  jsmbed_wrap_link_objects(js_object, network_interface, js_NetworkInterface_destructor);
-
-  return js_object;
+    CHECK_ARGUMENT_COUNT(global, easy_connect, (args_count == 0 || args_count == 1));
+    CHECK_ARGUMENT_TYPE_ON_CONDITION(global, easy_connect, 0, boolean, (args_count == 1));
+    
+    bool enable_logging = false;
+    if (args_count == 1) {
+        enable_logging = jerry_get_boolean_value(args[0]);
+    }
+    
+    // NB: easy_connect returns a NetworkInterface*
+    uintptr_t network_interface = (uintptr_t) easy_connect(enable_logging);
+    
+    jerry_value_t js_object = jerry_create_object();
+    jerry_set_object_native_handle(js_object, network_interface, NULL);
+    
+    return js_object;
 }
