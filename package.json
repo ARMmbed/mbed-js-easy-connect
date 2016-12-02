@@ -1,0 +1,18 @@
+{
+  "name": "mbed-js-easy-connect",
+  "version": "0.0.1",
+  "description": "Easy Connect library for JerryScript",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ARMmbed/mbed-js-easy-connect.git"
+  },
+  "keywords": [
+    "mbed"
+  ],
+  "author": "Stephen Kyle <Stephen.Kyle@arm.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ARMmbed/mbed-js-easy-connect/issues"
+  },
+  "homepage": "https://github.com/ARMmbed/mbed-js-easy-connect#readme"
+}
