@@ -1,0 +1,9 @@
+{
+	"source": [
+		"."
+	],
+	"includes": [
+		"lib_easy_connect.h"
+	],
+	"name": "easy_connect"
+}
