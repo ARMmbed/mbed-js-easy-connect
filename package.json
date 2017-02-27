@@ -1,6 +1,6 @@
 {
   "name": "mbed-js-easy-connect",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Easy Connect library for JerryScript",
   "repository": {
     "type": "git",
